@@ -1,0 +1,36 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Local development folders (not for public repo)
+.kiro/
+Assets/
+Audio files for Testing/
+
+# Unused default Vite assets
+src/assets/vite.svg
+src/assets/react.svg
+
+# Index CSS (consolidated into App.css)
+src/index.css

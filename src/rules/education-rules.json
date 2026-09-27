@@ -1,0 +1,246 @@
+{
+  "version": "0.2.0",
+  "topics": [
+    {
+      "id": "education.codec.mp3",
+      "title": "What is MP3?",
+      "body": "MP3 is a lossy audio format that reduces file size by removing audio data that is considered less perceptible. While convenient for everyday listening, it permanently discards information that cannot be recovered.",
+      "conditions": [
+        {
+          "field": "codec.raw",
+          "operator": "equals",
+          "value": "mp3"
+        }
+      ],
+      "relevanceReason": "This file uses the MP3 codec."
+    },
+    {
+      "id": "education.codec.aac",
+      "title": "What is AAC?",
+      "body": "AAC (Advanced Audio Coding) is a lossy format that generally achieves better quality than MP3 at the same bitrate. It's commonly used by streaming services and Apple devices.",
+      "conditions": [
+        {
+          "field": "codec.raw",
+          "operator": "equals",
+          "value": "aac"
+        }
+      ],
+      "relevanceReason": "This file uses the AAC codec."
+    },
+    {
+      "id": "education.codec.flac",
+      "title": "What is FLAC?",
+      "body": "FLAC (Free Lossless Audio Codec) compresses audio without discarding any data. The original audio can be perfectly reconstructed, making it ideal for archiving and critical listening.",
+      "conditions": [
+        {
+          "field": "codec.raw",
+          "operator": "equals",
+          "value": "flac"
+        }
+      ],
+      "relevanceReason": "This file uses the FLAC codec."
+    },
+    {
+      "id": "education.codec.wav",
+      "title": "What is WAV?",
+      "body": "WAV stores uncompressed audio data. It preserves complete quality but results in large file sizes. It's commonly used in professional audio production and mastering.",
+      "conditions": [
+        {
+          "field": "codec.raw",
+          "operator": "equals",
+          "value": "pcm_s16le"
+        }
+      ],
+      "relevanceReason": "This file contains uncompressed audio."
+    },
+    {
+      "id": "education.codec.wav.24bit",
+      "title": "What is WAV?",
+      "body": "WAV stores uncompressed audio data. This file uses 24-bit samples, preserving more detail than CD quality. Large file sizes are expected.",
+      "conditions": [
+        {
+          "field": "codec.raw",
+          "operator": "equals",
+          "value": "pcm_s24le"
+        }
+      ],
+      "relevanceReason": "This file contains uncompressed 24-bit audio."
+    },
+    {
+      "id": "education.bitrate.128kbps",
+      "title": "What does 128 kbps mean?",
+      "body": "128 kbps means 128,000 bits of data per second. For lossy formats, this is considered moderate compression—suitable for casual listening but may lack detail compared to higher bitrates.",
+      "conditions": [
+        {
+          "field": "technical.bitRateBps",
+          "operator": "lte",
+          "value": 128000
+        },
+        {
+          "field": "codec.compressionType",
+          "operator": "equals",
+          "value": "lossy"
+        }
+      ],
+      "relevanceReason": "This file has a bitrate of 128 kbps or lower."
+    },
+    {
+      "id": "education.bitrate.low",
+      "title": "Why is low bitrate a concern?",
+      "body": "Lower bitrates mean more audio data is discarded during compression. Details in high frequencies and subtle sounds may be lost. This is irreversible—no amount of processing can restore the original quality.",
+      "conditions": [
+        {
+          "field": "technical.bitRateBps",
+          "operator": "lte",
+          "value": 160000
+        },
+        {
+          "field": "codec.compressionType",
+          "operator": "equals",
+          "value": "lossy"
+        }
+      ],
+      "relevanceReason": "This file uses a low bitrate."
+    },
+    {
+      "id": "education.bitrate.high",
+      "title": "What makes 320 kbps special?",
+      "body": "320 kbps is the maximum bitrate for MP3 and represents the best quality achievable with this format. While still lossy, the differences from lossless are often difficult to perceive in normal listening conditions.",
+      "conditions": [
+        {
+          "field": "technical.bitRateBps",
+          "operator": "gte",
+          "value": 320000
+        },
+        {
+          "field": "codec.compressionType",
+          "operator": "equals",
+          "value": "lossy"
+        }
+      ],
+      "relevanceReason": "This file uses a high bitrate."
+    },
+    {
+      "id": "education.lossy.general",
+      "title": "What is lossy compression?",
+      "body": "Lossy compression permanently removes audio data to reduce file size. The discarded data cannot be recovered—converting a lossy file to FLAC will not restore the original quality.",
+      "conditions": [
+        {
+          "field": "codec.compressionType",
+          "operator": "equals",
+          "value": "lossy"
+        }
+      ],
+      "relevanceReason": "This file uses lossy compression."
+    },
+    {
+      "id": "education.lossless.general",
+      "title": "What does lossless mean?",
+      "body": "Lossless compression preserves all original audio data. The file can be decompressed to produce a bit-perfect copy of the original. This makes lossless formats ideal for archiving.",
+      "conditions": [
+        {
+          "field": "codec.compressionType",
+          "operator": "equals",
+          "value": "lossless"
+        }
+      ],
+      "relevanceReason": "This file uses lossless compression."
+    },
+    {
+      "id": "education.cdquality",
+      "title": "What is CD quality?",
+      "body": "CD quality refers to 16-bit audio at 44.1 kHz sample rate. This standard has been used since 1982 and remains excellent for most listening purposes, capturing the full range of human hearing.",
+      "conditions": [
+        {
+          "field": "technical.sampleRateHz",
+          "operator": "equals",
+          "value": 44100
+        },
+        {
+          "field": "technical.bitDepth",
+          "operator": "equals",
+          "value": 16
+        }
+      ],
+      "relevanceReason": "This file matches CD quality specifications."
+    },
+    {
+      "id": "education.hires.samplerate",
+      "title": "What does Hi-Res mean?",
+      "body": "Hi-Res (High Resolution) audio typically means lossless audio with sample rates above 44.1 kHz or bit depths above 16-bit. Whether the additional resolution is audibly beneficial depends on the source material and listening equipment.",
+      "conditions": [
+        {
+          "field": "technical.sampleRateHz",
+          "operator": "gte",
+          "value": 88200
+        }
+      ],
+      "relevanceReason": "This file has a high-resolution sample rate."
+    },
+    {
+      "id": "education.hires.bitdepth",
+      "title": "What do 24-bit and higher bit depths mean?",
+      "body": "Bit depth determines the dynamic range available. 24-bit audio provides more headroom than 16-bit, which is valuable during production. For finished recordings, the audible benefit in playback is debated.",
+      "conditions": [
+        {
+          "field": "technical.bitDepth",
+          "operator": "gte",
+          "value": 24
+        }
+      ],
+      "relevanceReason": "This file uses high-resolution bit depth."
+    },
+    {
+      "id": "education.samplerate.96khz",
+      "title": "Why 96 kHz?",
+      "body": "A 96 kHz sample rate captures frequencies up to 48 kHz—well beyond the ~20 kHz limit of human hearing. This is sometimes preferred for mastering headroom, though audible benefits in playback are debated.",
+      "conditions": [
+        {
+          "field": "technical.sampleRateHz",
+          "operator": "equals",
+          "value": 96000
+        }
+      ],
+      "relevanceReason": "This file uses a 96 kHz sample rate."
+    },
+    {
+      "id": "education.bitdepth.16vs24",
+      "title": "Why is 16-bit different from 24-bit?",
+      "body": "16-bit provides about 96 dB of dynamic range, which exceeds most listening environments. 24-bit provides 144 dB, offering headroom useful during recording and mixing. For playback of finished music, both are typically sufficient.",
+      "conditions": [
+        {
+          "field": "technical.bitDepth",
+          "operator": "exists",
+          "value": true
+        }
+      ],
+      "relevanceReason": "Understanding bit depth helps interpret this file's specifications."
+    },
+    {
+      "id": "education.restoration.impossible",
+      "title": "Why can't lossy files be restored to lossless quality?",
+      "body": "Converting a lossy file (like MP3) to a lossless format (like FLAC) only preserves what remains after compression. The data removed during the original encoding is gone permanently. The result is a larger file with no quality improvement.",
+      "conditions": [
+        {
+          "field": "codec.compressionType",
+          "operator": "equals",
+          "value": "lossy"
+        }
+      ],
+      "relevanceReason": "This helps clarify what can and cannot be done with lossy files."
+    }
+  ],
+  "summaryTemplates": {
+    "lossy_low_bitrate": "This is a highly compressed lossy file. It should work well for casual listening, but it is not suitable as an archive copy and cannot be converted to higher quality.",
+    "lossy_high_bitrate": "This is a high-quality lossy file. While not lossless, it offers good quality for everyday listening. It cannot be converted to true lossless quality.",
+    "lossless_cd": "This is CD-quality lossless audio. It preserves all audio data and is suitable for archiving. This is the standard that most commercial music is mastered to.",
+    "lossless_hires": "This is lossless high-resolution audio, technically consistent with Hi-Res specifications. The original source cannot be confirmed from metadata alone.",
+    "uncompressed": "This is uncompressed audio with no data loss. File sizes are large but quality is preserved exactly as recorded.",
+    "unknown": "The file's quality characteristics could not be fully determined. Some metadata may be missing or unusual."
+  },
+  "guidanceTemplates": {
+    "archive": "For archiving: Look for lossless formats (FLAC, ALAC, WAV) from reliable sources. Verify the source is not derived from a lossy original.",
+    "everyday": "For everyday listening: Higher bitrate lossy formats (256+ kbps AAC, 320 kbps MP3) offer good quality with smaller file sizes.",
+    "hires": "For Hi-Res: Look for lossless formats at 24-bit/88.2kHz or higher. Quality depends on the original master, not just the numbers."
+  }
+}

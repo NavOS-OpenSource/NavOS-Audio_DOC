@@ -1,0 +1,202 @@
+{
+  "version": "0.3.0",
+  "rules": [
+    {
+      "id": "source.mp3.low_bitrate_web",
+      "priority": 100,
+      "label": "low_bitrate_streaming",
+      "displayLabel": "Low-Bitrate Streaming / Web Rip",
+      "conditions": [
+        {
+          "field": "codec.compressionType",
+          "operator": "equals",
+          "value": "lossy"
+        },
+        {
+          "field": "technical.bitRateBps",
+          "operator": "lte",
+          "value": 160000
+        }
+      ],
+      "confidence": 75,
+      "reasons": [
+        "⚠ Bitrate ≤160 kbps suggests streaming or web-sourced audio",
+        "• Common in YouTube rips, podcasts, and low-quality streams",
+        "• Not suitable as an archive copy"
+      ]
+    },
+    {
+      "id": "source.lossy.high_bitrate",
+      "priority": 95,
+      "label": "high_bitrate_lossy",
+      "displayLabel": "High-Bitrate Lossy / Digital Purchase",
+      "conditions": [
+        {
+          "field": "codec.compressionType",
+          "operator": "equals",
+          "value": "lossy"
+        },
+        {
+          "field": "technical.bitRateBps",
+          "operator": "gte",
+          "value": 256000
+        }
+      ],
+      "confidence": 70,
+      "reasons": [
+        "✓ High bitrate (256+ kbps) indicates quality-conscious encoding",
+        "• Consistent with digital music store purchases",
+        "• Cannot determine exact provenance from bitrate alone"
+      ]
+    },
+    {
+      "id": "source.aac.itunes",
+      "priority": 97,
+      "label": "itunes_aac",
+      "displayLabel": "iTunes / Apple Music AAC",
+      "conditions": [
+        {
+          "field": "codec.raw",
+          "operator": "equals",
+          "value": "aac"
+        },
+        {
+          "field": "technical.bitRateBps",
+          "operator": "gte",
+          "value": 200000
+        }
+      ],
+      "confidence": 72,
+      "reasons": [
+        "• AAC at 256 kbps matches iTunes/Apple Music download format",
+        "• Could also be from other AAC-encoding services",
+        "• Provenance cannot be confirmed without additional metadata"
+      ]
+    },
+    {
+      "id": "source.flac.cd_quality",
+      "priority": 90,
+      "label": "cd_rip",
+      "displayLabel": "CD Rip",
+      "conditions": [
+        {
+          "field": "codec.compressionType",
+          "operator": "equals",
+          "value": "lossless"
+        },
+        {
+          "field": "technical.sampleRateHz",
+          "operator": "equals",
+          "value": 44100
+        }
+      ],
+      "confidence": 85,
+      "reasons": [
+        "✓ Lossless at 44.1 kHz matches CD specification",
+        "• Consistent with a CD rip or CD-quality download",
+        "• Cannot verify original CD source without additional data"
+      ]
+    },
+    {
+      "id": "source.flac.cd_quality_16bit",
+      "priority": 92,
+      "label": "cd_rip",
+      "displayLabel": "CD Rip",
+      "conditions": [
+        {
+          "field": "codec.compressionType",
+          "operator": "equals",
+          "value": "lossless"
+        },
+        {
+          "field": "technical.sampleRateHz",
+          "operator": "equals",
+          "value": 44100
+        },
+        {
+          "field": "technical.bitDepth",
+          "operator": "equals",
+          "value": 16
+        }
+      ],
+      "confidence": 90,
+      "reasons": [
+        "✓ Lossless 16-bit/44.1 kHz exactly matches CD Red Book standard",
+        "• Strongly suggests CD rip or CD-quality lossless download",
+        "• Exact provenance (original CD vs download) cannot be determined"
+      ]
+    },
+    {
+      "id": "source.flac.hires",
+      "priority": 110,
+      "label": "hi_res_download",
+      "displayLabel": "Hi-Res Download",
+      "conditions": [
+        {
+          "field": "codec.compressionType",
+          "operator": "equals",
+          "value": "lossless"
+        },
+        {
+          "field": "technical.sampleRateHz",
+          "operator": "gte",
+          "value": 88200
+        }
+      ],
+      "confidence": 80,
+      "reasons": [
+        "✓ Sample rate ≥88.2 kHz exceeds CD specification",
+        "• Consistent with hi-res audio download or studio export",
+        "• Original studio source cannot be verified from metadata"
+      ]
+    },
+    {
+      "id": "source.flac.hires_24bit",
+      "priority": 115,
+      "label": "hi_res_download",
+      "displayLabel": "Hi-Res Download",
+      "conditions": [
+        {
+          "field": "codec.compressionType",
+          "operator": "equals",
+          "value": "lossless"
+        },
+        {
+          "field": "technical.sampleRateHz",
+          "operator": "gte",
+          "value": 88200
+        },
+        {
+          "field": "technical.bitDepth",
+          "operator": "gte",
+          "value": 24
+        }
+      ],
+      "confidence": 85,
+      "reasons": [
+        "✓ 24-bit depth with high sample rate indicates hi-res mastering",
+        "• Consistent with hi-res download services (HDtracks, Qobuz, etc.)",
+        "• Provenance and mastering quality cannot be verified from file alone"
+      ]
+    },
+    {
+      "id": "source.wav.uncompressed",
+      "priority": 85,
+      "label": "studio_production_export",
+      "displayLabel": "Studio / Production Export",
+      "conditions": [
+        {
+          "field": "codec.compressionType",
+          "operator": "equals",
+          "value": "uncompressed"
+        }
+      ],
+      "confidence": 65,
+      "reasons": [
+        "✓ Uncompressed format preserves all audio data",
+        "• Common in studio production and professional workflows",
+        "• May also be a converted file (original source unknown)"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "version": "0.2.0",
+  "rules": [
+    {
+      "id": "quality.bitrate.lossy.low",
+      "description": "Low bitrate (<=128kbps) lossy audio has significant quality limitations.",
+      "conditions": [
+        {
+          "field": "codec.compressionType",
+          "operator": "equals",
+          "value": "lossy"
+        },
+        {
+          "field": "technical.bitRateBps",
+          "operator": "lte",
+          "value": 128000
+        }
+      ],
+      "scoreImpact": -15,
+      "reasons": ["Low bitrate (128 kbps or below) limits audio fidelity."]
+    },
+    {
+      "id": "quality.bitrate.lossy.medium",
+      "description": "Medium bitrate (129-255kbps) lossy audio is acceptable quality.",
+      "conditions": [
+        {
+          "field": "codec.compressionType",
+          "operator": "equals",
+          "value": "lossy"
+        },
+        {
+          "field": "technical.bitRateBps",
+          "operator": "range",
+          "value": [129000, 255999]
+        }
+      ],
+      "scoreImpact": 5,
+      "reasons": ["Medium bitrate provides reasonable lossy quality."]
+    },
+    {
+      "id": "quality.bitrate.lossy.high",
+      "description": "High bitrate (256kbps+) lossy audio approaches transparent quality.",
+      "conditions": [
+        {
+          "field": "codec.compressionType",
+          "operator": "equals",
+          "value": "lossy"
+        },
+        {
+          "field": "technical.bitRateBps",
+          "operator": "gte",
+          "value": 256000
+        }
+      ],
+      "scoreImpact": 15,
+      "reasons": ["High bitrate (256+ kbps) approaches transparent quality for most listeners."]
+    },
+    {
+      "id": "quality.sample_rate.hires.96khz",
+      "description": "96 kHz audio is commonly associated with hi-res releases.",
+      "conditions": [
+        {
+          "field": "technical.sampleRateHz",
+          "operator": "gte",
+          "value": 96000
+        }
+      ],
+      "scoreImpact": 10,
+      "reasons": ["96 kHz sample rate indicates hi-res audio."]
+    },
+    {
+      "id": "quality.bitdepth.24bit",
+      "description": "24-bit audio provides greater dynamic range.",
+      "conditions": [
+        {
+          "field": "technical.bitDepth",
+          "operator": "gte",
+          "value": 24
+        }
+      ],
+      "scoreImpact": 10,
+      "reasons": ["24-bit depth provides greater dynamic range."]
+    }
+  ]
+}
