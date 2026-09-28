@@ -1,8 +1,8 @@
-# NavOS · Audio DOC
+# NavOS - Audio DOC
 
 A browser-based audio file analyzer that examines metadata to assess audio quality, identify likely sources, and provide educational context — all without uploading files to any server.
 
-![NavOS Audio DOC](./src/assets/hero.png)
+<img width="1672" height="941" alt="Audio_Doc" src="https://github.com/user-attachments/assets/05dcdac5-6e9c-4a6c-8f02-e6b60044a432" />
 
 ## Features
 
@@ -32,6 +32,8 @@ A browser-based audio file analyzer that examines metadata to assess audio quali
    - Technical audio specifications
    - Educational context
 4. Export results as PDF or copy to clipboard
+
+<img width="949" height="864" alt="image" src="https://github.com/user-attachments/assets/1549f040-ed06-406f-a660-92b2a16e7700" />
 
 ## Development
 
@@ -73,30 +75,6 @@ Output goes to `dist/` directory.
 ```bash
 npm run preview
 ```
-
-## Deployment
-
-### GitHub Pages
-
-1. Build the project: `npm run build`
-2. The `dist/` folder contains static files ready for deployment
-3. Configure GitHub Pages to serve from the `dist/` folder or use a GitHub Action
-
-For a custom subdirectory (e.g., `username.github.io/repo-name/`), update `base` in `vite.config.ts`:
-
-```ts
-base: '/repo-name/',
-```
-
-### Other Static Hosts
-
-The build output is a standard static site (HTML + JS + CSS) that works on any static hosting:
-
-- Vercel
-- Netlify
-- Cloudflare Pages
-- AWS S3 + CloudFront
-- Any web server
 
 ## Architecture
 
