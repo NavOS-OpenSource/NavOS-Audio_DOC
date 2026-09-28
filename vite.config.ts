@@ -5,8 +5,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   // Base path for GitHub Pages deployment
-  // Change this to your repo name: '/<repo-name>/' or '/' for custom domain
-  base: './',
+  base: '/NavOS-Audio_DOC/',
   test: {
     environment: 'node',
     passWithNoTests: true,
