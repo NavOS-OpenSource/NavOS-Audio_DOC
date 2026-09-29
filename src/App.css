@@ -1388,6 +1388,35 @@ textarea:focus-visible,
   align-items: center;
 }
 
+/* ===== GitHub Button ===== */
+.github-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: transparent;
+  color: var(--color-text-primary);
+  font-weight: 900;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border: var(--border-thick);
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.1s, background 0.1s;
+  text-decoration: none;
+}
+
+.github-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 var(--color-text-primary);
+}
+
+.github-btn .github-icon {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
 /* ===== Support Button ===== */
 .support-btn {
   display: inline-flex;
@@ -1695,8 +1724,428 @@ textarea:focus-visible,
     gap: var(--space-xs);
   }
   
+  .github-btn,
   .support-btn {
     padding: 8px 12px;
     font-size: 10px;
   }
+}
+
+
+/* ===== Spectral Analysis Section ===== */
+
+.spectral-analysis-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.spectral-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-xl);
+}
+
+.analysis-progress-bar {
+  width: 100%;
+  max-width: 300px;
+  height: 8px;
+  background: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+}
+
+.analysis-progress-fill {
+  height: 100%;
+  background: var(--color-accent);
+  transition: width 0.3s ease;
+}
+
+.analysis-progress-text {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  font-family: monospace;
+}
+
+.spectral-error {
+  padding: var(--space-lg);
+  background: var(--color-bg-tertiary);
+  border-left: 3px solid var(--color-concern);
+}
+
+.spectral-error p {
+  margin: 0 0 var(--space-sm);
+}
+
+.spectral-error-hint {
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+/* Spectrogram Viewer */
+.spectrogram-viewer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.spectrogram-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.channel-toggle {
+  display: flex;
+  border: var(--border-thin);
+}
+
+.channel-toggle button {
+  background: transparent;
+  border: none;
+  padding: var(--space-xs) var(--space-md);
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.channel-toggle button.active {
+  background: var(--color-text-primary);
+  color: var(--color-bg);
+}
+
+.channel-toggle button:hover:not(.active) {
+  background: var(--color-bg-tertiary);
+}
+
+.download-png-btn {
+  background: transparent;
+  border: var(--border-thin);
+  padding: var(--space-xs) var(--space-md);
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.download-png-btn:hover {
+  background: var(--color-text-primary);
+  color: var(--color-bg);
+}
+
+.spectrogram-canvas-container {
+  background: #000;
+  border: 1px solid var(--color-border);
+  overflow-x: auto;
+}
+
+.spectrogram-canvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.spectrogram-info {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  font-size: 11px;
+  color: var(--color-text-muted);
+  font-family: monospace;
+}
+
+/* Spectral Interpretation */
+.spectral-interpretation {
+  padding: var(--space-md);
+  background: var(--color-bg-tertiary);
+  border-left: 3px solid var(--color-accent);
+}
+
+.spectral-interpretation h3 {
+  margin: 0 0 var(--space-sm);
+  font-size: 13px;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.interpretation-text {
+  margin: 0;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+/* Provenance Section */
+.provenance-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.provenance-section h3 {
+  margin: 0;
+  font-size: 14px;
+  border-bottom: var(--border-thin);
+  padding-bottom: var(--space-sm);
+}
+
+.provenance-verdict {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.verdict-badge {
+  display: inline-block;
+  padding: var(--space-xs) var(--space-md);
+  font-size: 13px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: 2px solid;
+}
+
+.verdict-lossless {
+  color: var(--color-positive);
+  border-color: var(--color-positive);
+  background: rgba(0, 255, 0, 0.05);
+}
+
+.verdict-hires {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+  background: rgba(255, 215, 0, 0.05);
+}
+
+.verdict-transcoded {
+  color: var(--color-concern);
+  border-color: var(--color-concern);
+  background: rgba(255, 165, 0, 0.05);
+}
+
+.verdict-lossy {
+  color: var(--color-text-secondary);
+  border-color: var(--color-text-secondary);
+  background: var(--color-bg-tertiary);
+}
+
+.verdict-upsampled {
+  color: #ff8c00;
+  border-color: #ff8c00;
+  background: rgba(255, 140, 0, 0.05);
+}
+
+.verdict-unknown {
+  color: var(--color-text-muted);
+  border-color: var(--color-border);
+  background: var(--color-bg-tertiary);
+}
+
+.verdict-confidence {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+/* Provenance Details */
+.provenance-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+}
+
+@media (max-width: 768px) {
+  .provenance-details {
+    grid-template-columns: 1fr;
+  }
+}
+
+.measured-facts h4,
+.evidence-indicators h4 {
+  margin: 0 0 var(--space-sm);
+  font-size: 11px;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.measured-facts ul,
+.evidence-indicators ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.measured-facts li {
+  padding: var(--space-xs) 0;
+  font-size: 13px;
+  font-family: monospace;
+  border-bottom: 1px dotted var(--color-border);
+}
+
+.indicator-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px dotted var(--color-border);
+}
+
+.indicator-icon {
+  flex-shrink: 0;
+  width: 16px;
+  text-align: center;
+}
+
+.indicator-positive .indicator-icon { color: var(--color-positive); }
+.indicator-concern .indicator-icon { color: var(--color-concern); }
+.indicator-neutral .indicator-icon { color: var(--color-text-muted); }
+
+.indicator-finding {
+  flex: 1;
+  font-size: 13px;
+}
+
+.indicator-significance {
+  flex-shrink: 0;
+  padding: 2px 6px;
+  font-size: 10px;
+  text-transform: uppercase;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+}
+
+.sig-strong { 
+  border-color: var(--color-concern);
+  color: var(--color-concern);
+}
+
+.sig-moderate {
+  border-color: var(--color-text-secondary);
+  color: var(--color-text-secondary);
+}
+
+/* Provenance Limitations */
+.provenance-limitations {
+  padding: var(--space-md);
+  background: var(--color-bg-tertiary);
+  border-left: 2px solid var(--color-border);
+}
+
+.provenance-limitations h4 {
+  margin: 0 0 var(--space-sm);
+  font-size: 11px;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.provenance-limitations ul {
+  margin: 0;
+  padding-left: var(--space-md);
+}
+
+.provenance-limitations li {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  padding: var(--space-xs) 0;
+}
+
+/* Spectral Advanced Details */
+.spectral-advanced {
+  border: var(--border-thin);
+  margin-top: var(--space-md);
+}
+
+.spectral-advanced summary {
+  padding: var(--space-md);
+  cursor: pointer;
+  font-weight: bold;
+  background: var(--color-bg-secondary);
+  user-select: none;
+}
+
+.spectral-advanced summary:hover {
+  background: var(--color-bg-tertiary);
+}
+
+.spectral-advanced[open] summary {
+  border-bottom: var(--border-thin);
+}
+
+.technical-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-lg);
+  padding: var(--space-lg);
+}
+
+.tech-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.tech-section h4 {
+  margin: 0;
+  font-size: 12px;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding-bottom: var(--space-xs);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.tech-section dl {
+  margin: 0;
+}
+
+.tech-section dl > div {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-xs) 0;
+  border-bottom: 1px dotted var(--color-border);
+}
+
+.tech-section dt {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.tech-section dd {
+  margin: 0;
+  font-size: 14px;
+  font-family: monospace;
+}
+
+.tech-explanation {
+  display: block;
+  font-size: 11px;
+  color: var(--color-text-muted);
+  font-family: var(--font-sans);
+  margin-top: 2px;
+}
+
+.processing-info {
+  padding: var(--space-md);
+  margin: var(--space-md);
+  background: var(--color-bg-tertiary);
+}
+
+.processing-info dl {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md) var(--space-xl);
+}
+
+.processing-info dl > div {
+  flex-direction: row;
+  gap: var(--space-sm);
+  border: none;
+  padding: 0;
 }
