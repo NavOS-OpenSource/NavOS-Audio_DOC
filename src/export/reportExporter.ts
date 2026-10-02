@@ -146,7 +146,7 @@ export function generatePdfReport(options: ExportOptions): void {
   doc.setFont(FONT.bold, 'bold')
   doc.setFontSize(24)
   doc.setTextColor(COLORS.black)
-  doc.text('NAVOS', margin, 18)
+  doc.text('NavOS', margin, 18)
   
   // Audio DOC subtitle
   doc.setFontSize(24)
@@ -372,7 +372,7 @@ export function generatePdfReport(options: ExportOptions): void {
     doc.setFont(FONT.regular, 'normal')
     doc.setFontSize(8)
     doc.setTextColor(COLORS.textMuted)
-    doc.text('NAVOS // AUDIO DOC', margin, pageHeight - 10)
+    doc.text('NavOS // AUDIO DOC', margin, pageHeight - 10)
     doc.text(`Page ${i} of ${totalPages}`, pageWidth - margin - 20, pageHeight - 10)
   }
   
@@ -388,7 +388,7 @@ export function generateTextSummary(report: HiFiNaviReport, fileInfo?: Extracted
   const lines: string[] = []
   
   lines.push('═══════════════════════════════════════')
-  lines.push('NAVOS // AUDIO DOC - ANALYSIS SUMMARY')
+  lines.push('NavOS // AUDIO DOC - ANALYSIS SUMMARY')
   lines.push('═══════════════════════════════════════')
   lines.push('')
   
