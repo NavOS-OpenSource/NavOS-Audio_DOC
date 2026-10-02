@@ -165,15 +165,15 @@ MIT License — see [LICENSE](LICENSE) for details.
 
 ## Author
 
-**Navin Sankar Velliangiri**
+NavOS-OpenSource
 
-- GitHub: [@pnavastudio](https://github.com/pnavastudio)
+- GitHub: https://github.com/sponsors/NavOS-OpenSource
 
 ## Support
 
 If you find this tool useful, consider supporting development:
 
-[![Sponsor](https://img.shields.io/badge/Sponsor-❤-red)](https://github.com/sponsors/pnavastudio)
+[![Sponsor](https://img.shields.io/badge/Sponsor-❤-red)](https://github.com/sponsors/NavOS-OpenSource)
 
 ## Credits
 
