@@ -273,6 +273,9 @@ export function metadataToFFprobeText(metadata: ParsedMetadata): string {
   if (metadata.format_name) {
     lines.push(`format_name=${metadata.format_name}`)
   }
+  if (metadata.has_album_art) {
+    lines.push(`disposition:attached_pic=1`)
+  }
   
   return lines.join('\n')
 }

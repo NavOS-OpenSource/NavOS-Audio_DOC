@@ -77,12 +77,47 @@ function App() {
   // Floating notes for background
   const [floatingNotes, setFloatingNotes] = useState<FloatingNote[]>(() => generateNotes(20))
 
-  // Handle keypress to dismiss landing
+  // Background music - use persistent Audio object (not DOM element) so it survives re-renders
+  const bgAudioRef = useRef<HTMLAudioElement | null>(null)
+  
+  // Initialize audio object once
+  useEffect(() => {
+    if (!bgAudioRef.current) {
+      const audio = new Audio(`${import.meta.env.BASE_URL}Background.mpeg`)
+      audio.loop = true
+      audio.preload = 'auto'
+      bgAudioRef.current = audio
+    }
+    
+    // Cleanup on unmount
+    return () => {
+      if (bgAudioRef.current) {
+        bgAudioRef.current.pause()
+        bgAudioRef.current = null
+      }
+    }
+  }, [])
+  
+  // Background music state
+  const [bgMusicEnabled, setBgMusicEnabled] = useState(() => {
+    const saved = localStorage.getItem('navos-bg-music')
+    return saved !== 'false' // Default to true
+  })
+  
+  // Track if user has interacted (to bypass autoplay block)
+  const [hasInteracted, setHasInteracted] = useState(false)
+
+  // Handle keypress to dismiss landing, start music, and mark interaction
   useEffect(() => {
     if (!showLanding) return
     
     const handleKeyPress = () => {
       sessionStorage.setItem('navos-entered', 'true')
+      setHasInteracted(true)
+      // Start music immediately on the landing page audio element
+      if (bgAudioRef.current && bgMusicEnabled) {
+        bgAudioRef.current.play().catch(() => {})
+      }
       setShowLanding(false)
     }
     
@@ -93,7 +128,24 @@ function App() {
       window.removeEventListener('keydown', handleKeyPress)
       window.removeEventListener('click', handleKeyPress)
     }
-  }, [showLanding])
+  }, [showLanding, bgMusicEnabled])
+  
+  // If landing was skipped (returning user), capture first interaction for music
+  useEffect(() => {
+    if (showLanding || hasInteracted) return
+    
+    const handleFirstInteraction = () => {
+      setHasInteracted(true)
+    }
+    
+    window.addEventListener('click', handleFirstInteraction, { once: true })
+    window.addEventListener('keydown', handleFirstInteraction, { once: true })
+    
+    return () => {
+      window.removeEventListener('click', handleFirstInteraction)
+      window.removeEventListener('keydown', handleFirstInteraction)
+    }
+  }, [showLanding, hasInteracted])
 
   // Animate floating notes (both landing and main app)
   useEffect(() => {
@@ -197,19 +249,12 @@ function App() {
   const [duration, setDuration] = useState(0)
   const audioRef = useRef<HTMLAudioElement | null>(null)
 
-  // Background music state
-  const [bgMusicEnabled, setBgMusicEnabled] = useState(() => {
-    const saved = localStorage.getItem('navos-bg-music')
-    return saved !== 'false' // Default to true
-  })
-  const bgAudioRef = useRef<HTMLAudioElement | null>(null)
-
   // Background music control
   useEffect(() => {
     // Save preference
     localStorage.setItem('navos-bg-music', bgMusicEnabled.toString())
     
-    if (bgAudioRef.current) {
+    if (bgAudioRef.current && hasInteracted) {
       if (bgMusicEnabled && !isPlaying) {
         // Play background music if enabled and user isn't playing analyzed audio
         bgAudioRef.current.play().catch(() => {
@@ -220,7 +265,7 @@ function App() {
         bgAudioRef.current.pause()
       }
     }
-  }, [bgMusicEnabled, isPlaying])
+  }, [bgMusicEnabled, isPlaying, hasInteracted])
 
   // Toggle background music
   const toggleBgMusic = useCallback(() => {
@@ -630,7 +675,6 @@ function App() {
     )
   }
 
-  // Landing page
   if (showLanding) {
     return (
       <div className="landing-page">
@@ -1443,13 +1487,6 @@ function App() {
         </div>
       )}
 
-      {/* Background Music */}
-      <audio
-        ref={bgAudioRef}
-        src="/NavOS-Audio_DOC/Background.mpeg"
-        loop
-        preload="auto"
-      />
     </main>
     </div>
   )
