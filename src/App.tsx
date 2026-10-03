@@ -1374,10 +1374,171 @@ function App() {
         </section>
       )}
 
-      {/* Empty state when no analysis */}
+      {/* What is NavOS? - Explanatory section for first-time visitors */}
       {!report && inputMode === 'file' && !fileState.isLoading && (
-        <section className="empty-state">
-          <p>Drop an audio file above to see its quality analysis</p>
+        <section className="about-section" aria-labelledby="about-heading">
+          {/* INTRO */}
+          <div className="about-intro">
+            <h2 id="about-heading" className="about-heading">WHAT IS NavOS · AUDIO DOC?</h2>
+            <p className="about-lead">
+              Your music file contains more technical information than you can see.
+            </p>
+            <p className="about-body">
+              NavOS reads the metadata hidden inside your audio files and turns it into a clear, human-readable report—showing you what the file actually contains, how it was encoded, and where it likely came from.
+            </p>
+          </div>
+
+          {/* WHAT NAVOS LOOKS AT */}
+          <div className="about-block">
+            <h3 className="about-block-heading">WHAT NAVOS LOOKS AT</h3>
+            <div className="inspect-grid" role="list">
+              <div className="inspect-item" role="listitem">
+                <span className="inspect-label">FORMAT & CODEC</span>
+                <span className="inspect-desc">MP3, FLAC, WAV, AAC, Opus—what type of audio encoding.</span>
+              </div>
+              <div className="inspect-item" role="listitem">
+                <span className="inspect-label">BITRATE</span>
+                <span className="inspect-desc">The data rate used to encode the audio.</span>
+              </div>
+              <div className="inspect-item" role="listitem">
+                <span className="inspect-label">SAMPLE RATE</span>
+                <span className="inspect-desc">44.1 kHz, 48 kHz, 96 kHz and higher.</span>
+              </div>
+              <div className="inspect-item" role="listitem">
+                <span className="inspect-label">BIT DEPTH</span>
+                <span className="inspect-desc">16-bit, 24-bit—the resolution of each sample.</span>
+              </div>
+              <div className="inspect-item" role="listitem">
+                <span className="inspect-label">CHANNELS</span>
+                <span className="inspect-desc">Stereo, mono, or multi-channel layout.</span>
+              </div>
+              <div className="inspect-item" role="listitem">
+                <span className="inspect-label">DURATION & SIZE</span>
+                <span className="inspect-desc">Playback length and file size.</span>
+              </div>
+              <div className="inspect-item" role="listitem">
+                <span className="inspect-label">ENCODER</span>
+                <span className="inspect-desc">Software used to create the file, when available.</span>
+              </div>
+              <div className="inspect-item" role="listitem">
+                <span className="inspect-label">SOURCE CLUES</span>
+                <span className="inspect-desc">Metadata patterns that may indicate likely origin.</span>
+              </div>
+            </div>
+          </div>
+
+          {/* WHAT YOU GET */}
+          <div className="about-block">
+            <h3 className="about-block-heading">WHAT YOU GET</h3>
+            <div className="result-grid" role="list">
+              <div className="result-item" role="listitem">
+                <span className="result-label">QUALITY ANALYSIS</span>
+                <span className="result-desc">A score and tier based on the file's technical characteristics.</span>
+              </div>
+              <div className="result-item" role="listitem">
+                <span className="result-label">LIKELY SOURCE</span>
+                <span className="result-desc">A conservative estimate of where this file probably came from.</span>
+              </div>
+              <div className="result-item" role="listitem">
+                <span className="result-label">CONFIDENCE</span>
+                <span className="result-desc">How strongly the available evidence supports the assessment.</span>
+              </div>
+              <div className="result-item" role="listitem">
+                <span className="result-label">IN SIMPLE TERMS</span>
+                <span className="result-desc">Plain-language explanation for non-technical listeners.</span>
+              </div>
+              <div className="result-item" role="listitem">
+                <span className="result-label">SPECTRAL VIEW</span>
+                <span className="result-desc">Visual frequency analysis of your audio.</span>
+              </div>
+              <div className="result-item" role="listitem">
+                <span className="result-label">EXPORT OPTIONS</span>
+                <span className="result-desc">Copy summary, copy technical details, or save as PDF.</span>
+              </div>
+            </div>
+          </div>
+
+          {/* HOW IT WORKS */}
+          <div className="about-block">
+            <h3 className="about-block-heading">HOW IT WORKS</h3>
+            <div className="workflow-list">
+              <div className="workflow-step">
+                <span className="workflow-num">01</span>
+                <div className="workflow-content">
+                  <span className="workflow-title">YOUR FILE</span>
+                  <span className="workflow-desc">Drop or select an audio file from your device.</span>
+                </div>
+              </div>
+              <div className="workflow-step">
+                <span className="workflow-num">02</span>
+                <div className="workflow-content">
+                  <span className="workflow-title">INSPECT</span>
+                  <span className="workflow-desc">NavOS reads the technical metadata directly in your browser.</span>
+                </div>
+              </div>
+              <div className="workflow-step">
+                <span className="workflow-num">03</span>
+                <div className="workflow-content">
+                  <span className="workflow-title">ANALYZE</span>
+                  <span className="workflow-desc">The local engine interprets the available technical information.</span>
+                </div>
+              </div>
+              <div className="workflow-step">
+                <span className="workflow-num">04</span>
+                <div className="workflow-content">
+                  <span className="workflow-title">UNDERSTAND</span>
+                  <span className="workflow-desc">You get quality scoring, source clues, confidence, and explanations.</span>
+                </div>
+              </div>
+              <div className="workflow-step">
+                <span className="workflow-num">05</span>
+                <div className="workflow-content">
+                  <span className="workflow-title">DOCUMENT</span>
+                  <span className="workflow-desc">Review, copy, or export the analysis as a PDF report.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* BUILT FOR LISTENERS */}
+          <div className="about-block about-block-narrow">
+            <h3 className="about-block-heading">BUILT FOR LISTENERS</h3>
+            <p className="about-editorial">
+              Whether you're checking a FLAC collection, comparing downloads, inspecting an old MP3, or simply trying to understand what's inside your music files—NavOS gives the technical details context.
+            </p>
+          </div>
+
+          {/* PRIVATE BY DESIGN */}
+          <div className="about-block">
+            <h3 className="about-block-heading">PRIVATE BY DESIGN</h3>
+            <div className="privacy-grid">
+              <div className="privacy-item">
+                <span className="privacy-label">NO ACCOUNT</span>
+                <span className="privacy-desc">No registration or sign-in required.</span>
+              </div>
+              <div className="privacy-item">
+                <span className="privacy-label">NO CLOUD UPLOAD</span>
+                <span className="privacy-desc">Your audio file never leaves your device.</span>
+              </div>
+              <div className="privacy-item">
+                <span className="privacy-label">BROWSER-BASED</span>
+                <span className="privacy-desc">All analysis runs locally on your machine.</span>
+              </div>
+            </div>
+            <div className="privacy-flow" aria-label="Data flow diagram">
+              <span className="privacy-flow-item">YOUR FILE</span>
+              <span className="privacy-flow-arrow" aria-hidden="true">→</span>
+              <span className="privacy-flow-item">YOUR BROWSER</span>
+              <span className="privacy-flow-arrow" aria-hidden="true">→</span>
+              <span className="privacy-flow-item privacy-flow-highlight">ANALYSIS</span>
+              <span className="privacy-flow-note">(no server involved)</span>
+            </div>
+          </div>
+
+          {/* CLOSING */}
+          <div className="about-closing">
+            <p className="about-tagline">FROM FILE → TO UNDERSTANDING</p>
+          </div>
         </section>
       )}
 

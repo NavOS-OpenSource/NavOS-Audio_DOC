@@ -151,7 +151,7 @@ body {
 
 /* Theme Toggle Button */
 .theme-toggle {
-  padding: 12px 24px;
+  padding: 12px 20px;
   background: var(--color-text-primary);
   color: var(--color-bg);
   font-weight: 900;
@@ -446,17 +446,389 @@ button:focus-visible {
   outline-offset: 2px;
 }
 
-/* ===== Empty State ===== */
-.empty-state {
-  text-align: center;
+/* ===== About Section - What is NavOS? ===== */
+.about-section {
+  margin-top: var(--space-xl);
+  border: var(--border-thick);
+  background: transparent;
+}
+
+/* Intro block */
+.about-intro {
   padding: var(--space-2xl) var(--space-lg);
-  border: var(--border-thin);
-  border-style: dashed;
-  color: var(--color-text-muted);
+  text-align: center;
+  border-bottom: var(--border-thin);
+}
+
+.about-heading {
+  margin: 0 0 var(--space-lg);
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: 4px;
+  color: var(--color-text-primary);
+}
+
+.about-lead {
+  margin: 0 0 var(--space-md);
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--color-text-primary);
+  line-height: 1.4;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.about-body {
+  margin: 0;
   font-size: 14px;
   font-weight: 700;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Block sections */
+.about-block {
+  padding: var(--space-xl) var(--space-lg);
+  border-bottom: var(--border-thin);
+}
+
+.about-block-narrow {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about-block-heading {
+  margin: 0 0 var(--space-lg);
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  color: var(--color-text-muted);
   text-transform: uppercase;
+}
+
+/* Inspect grid - What NavOS looks at */
+.inspect-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-md);
+}
+
+.inspect-item {
+  padding: var(--space-md);
+  border: var(--border-thin);
+  text-align: left;
+}
+
+.inspect-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-xs);
+  text-transform: uppercase;
+}
+
+.inspect-desc {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+/* Result grid - What you get */
+.result-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.result-item {
+  padding: var(--space-md);
+  background: var(--color-text-primary);
+  text-align: left;
+}
+
+.result-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: var(--color-bg);
+  margin-bottom: var(--space-xs);
+  text-transform: uppercase;
+}
+
+.result-desc {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-bg);
+  line-height: 1.5;
+  opacity: 0.85;
+}
+
+/* Workflow list - How it works */
+.workflow-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.workflow-step {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  border: var(--border-thin);
+}
+
+.workflow-num {
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--color-text-muted);
+  min-width: 32px;
   letter-spacing: 1px;
+}
+
+.workflow-content {
+  flex: 1;
+}
+
+.workflow-title {
+  display: block;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: var(--color-text-primary);
+  margin-bottom: 2px;
+  text-transform: uppercase;
+}
+
+.workflow-desc {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+
+/* Editorial block */
+.about-editorial {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+/* Privacy grid */
+.privacy-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.privacy-item {
+  padding: var(--space-md);
+  border: var(--border-thin);
+  text-align: center;
+}
+
+.privacy-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-xs);
+  text-transform: uppercase;
+}
+
+.privacy-desc {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+
+/* Privacy flow diagram */
+.privacy-flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  background: var(--color-bg-secondary);
+  border: var(--border-thin);
+}
+
+.privacy-flow-item {
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+}
+
+.privacy-flow-highlight {
+  padding: var(--space-xs) var(--space-sm);
+  background: var(--color-text-primary);
+  color: var(--color-bg);
+}
+
+.privacy-flow-arrow {
+  font-size: 16px;
+  font-weight: 900;
+  color: var(--color-text-muted);
+}
+
+.privacy-flow-note {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+/* Closing */
+.about-closing {
+  padding: var(--space-lg);
+  text-align: center;
+}
+
+.about-tagline {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  color: var(--color-text-primary);
+}
+
+/* ===== About section responsive - Tablet ===== */
+@media (max-width: 900px) {
+  .inspect-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .result-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .privacy-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ===== About section responsive - Mobile ===== */
+@media (max-width: 600px) {
+  .about-intro {
+    padding: var(--space-lg) var(--space-md);
+  }
+  
+  .about-heading {
+    font-size: 20px;
+    letter-spacing: 2px;
+  }
+  
+  .about-lead {
+    font-size: 16px;
+  }
+  
+  .about-body {
+    font-size: 13px;
+  }
+  
+  .about-block {
+    padding: var(--space-lg) var(--space-md);
+  }
+  
+  .about-block-heading {
+    font-size: 12px;
+    letter-spacing: 2px;
+  }
+  
+  .inspect-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+  }
+  
+  .inspect-item {
+    padding: var(--space-sm) var(--space-md);
+  }
+  
+  .result-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+  }
+  
+  .result-item {
+    padding: var(--space-sm) var(--space-md);
+  }
+  
+  .workflow-list {
+    gap: var(--space-xs);
+  }
+  
+  .workflow-step {
+    padding: var(--space-sm) var(--space-md);
+    gap: var(--space-sm);
+  }
+  
+  .workflow-num {
+    font-size: 14px;
+    min-width: 24px;
+  }
+  
+  .workflow-title {
+    font-size: 11px;
+  }
+  
+  .workflow-desc {
+    font-size: 11px;
+  }
+  
+  .about-editorial {
+    font-size: 14px;
+  }
+  
+  .privacy-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+  }
+  
+  .privacy-item {
+    padding: var(--space-sm) var(--space-md);
+  }
+  
+  .privacy-flow {
+    flex-direction: column;
+    gap: var(--space-xs);
+    padding: var(--space-sm) var(--space-md);
+  }
+  
+  .privacy-flow-arrow {
+    transform: rotate(90deg);
+  }
+  
+  .about-closing {
+    padding: var(--space-md);
+  }
+  
+  .about-tagline {
+    font-size: 13px;
+    letter-spacing: 2px;
+  }
 }
 
 /* ===== Report Grid ===== */
@@ -1986,7 +2358,7 @@ textarea:focus-visible,
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 12px;
+  padding: 12px 16px;
   background: transparent;
   color: var(--color-text-primary);
   border: var(--border-thick);
@@ -2005,8 +2377,8 @@ textarea:focus-visible,
 }
 
 .bg-music-btn .speaker-icon {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
 }
 
 /* ===== Support Button ===== */
