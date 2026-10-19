@@ -1,15 +1,8 @@
 # These are supported funding model platforms
 
-github: [pnavastudio]
-# patreon:
-# open_collective:
-# ko_fi:
-# tidelift:
-# community_bridge:
-# liberapay:
-# issuehunt:
-# lfx_crowdfunding:
-# polar:
-# buy_me_a_coffee:
-# thanks_dev:
-custom: ['https://www.buymeacoffee.com/pnavastudio']
+github: [NavOS-OpenSource]
+ko_fi: navin007
+custom:
+  - https://paypal.me/Navin007143
+  - https://razorpay.me/@navin007
+  - upi://pay?pa=navinbalaji004@okhdfcbank&pn=Navin%20Balaji
